@@ -33,6 +33,7 @@ I'm glad you asked! [Arctic Redpolls](https://en.wikipedia.org/wiki/Arctic_redpo
 They look like this:
 
 ![](720-1440-arctic-redpoll-AF2T13681.jpg)
+
 (photograph by [Ron McCombe](http://focusingonwildlife.com/news/arctic-redpoll-kaamanen-finland))
 
 They have absolutely nothing to do with trees, other than "living in them", and they are (as far as modern science knows) unaware of the intricacies of data storage and manipulation. But they *are* quite cute, and zoologically quite interesting. So there you go: arctic redpolls. Go look them up, and appreciate the diversity of life on this planet. Because why not?
