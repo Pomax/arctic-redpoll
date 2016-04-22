@@ -1,0 +1,25 @@
+{
+  "name": "arctic-redpoll",
+  "version": "1.0.0",
+  "description": "A JavaScript Tree Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pomax/arctic-redpoll.git"
+  },
+  "keywords": [
+    "Tree",
+    "Trees",
+    "Data",
+    "Structures"
+  ],
+  "author": "Pomax",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Pomax/arctic-redpoll/issues"
+  },
+  "homepage": "https://github.com/Pomax/arctic-redpoll#readme"
+}
