@@ -14,10 +14,12 @@
     "Tree",
     "Trees",
     "Data",
-    "Structures"
+    "Structures",
+    "arctic",
+    "redpoll"
   ],
   "author": "Pomax",
-  "license": "UNLICENSED",
+  "license": "PD",
   "bugs": {
     "url": "https://github.com/Pomax/arctic-redpoll/issues"
   },
