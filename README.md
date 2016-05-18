@@ -2,14 +2,14 @@
 
 Arctic Redpoll is a JavaScript Tree library for people who don't want to have to care about Trees, and just want to work with data. Which should be anyone working with trees, really.
 
-Instead of using a crazy API like this:
+Instead of using an API where you are responsible for building the tree, like this:
 
 ```
 node n = new Node(value);
 someOtherNode.add(n);
 ```
 
-in which you clearly need to keep track of nodes yourself, which is ludicrous, this library used the following API instead:
+this library used the following API instead:
 
 ```
 var root = new Tree();
@@ -18,25 +18,25 @@ root.add({ all: "the", values: "you", care: "about" });
 
 Done. 
 
-Of course, if you want a little more control, read on, but really that's that most important part: this library takes care of the tree nonsense, so you don't have to, unless *you care*, in which case it lets you care to an incredibly degree.
+Of course, if you want a little more control, read on, but really that's that most important part: this library takes care of the tree building so you don't have to. Unless *you care*, in which case it lets you care to an incredibly degree.
 
 ## Cool... so... why "arctic redpoll"?
 
-Because naming things is hard, and to be honest https://npmjs.com is filled with shitty incomplete and undocumented tree libraries, and as a consequence all the obvious names are taken.
+Because naming things is hard, and to be honest https://npmjs.com is filled with poor, incomplete and/or undocumented tree libraries, and as a consequence all the obvious names are taken.
 
-So why not name it after a thing I like?   
+So why not name it after an arctic redpoll?   
 
 ## Fair enough... so what is an "arctic redpoll"?
 
-I'm glad you asked! [Arctic Redpolls](https://en.wikipedia.org/wiki/Arctic_redpoll) are a kind of finch (specifically, the "redpoll" genus in the finch family), and live in the arctic circle, in trunda regions, defying all logic by simply existing.
+I'm glad you asked! [Arctic Redpolls](https://en.wikipedia.org/wiki/Arctic_redpoll) are a kind of finch (specifically, the "redpoll" genus in the finch family), and live in tundra regions in the arctic circle, defying all logic by simply existing.
 
 They look like this:
 
-![](720-1440-arctic-redpoll-AF2T13681.jpg)
+![](arctic-redpoll.jpg)
 
-(photograph by [Ron McCombe](http://focusingonwildlife.com/news/arctic-redpoll-kaamanen-finland))
+(photograph [CC2.0-by](https://creativecommons.org/licenses/by/2.0), [Ron Knight](https://www.flickr.com/photos/sussexbirder/13667517895/in/photolist-nYBFrH-mPKAUg-mPKMpx-B6XZ2a-dKMwiR-63rJ41-63rzPd))
 
-They have absolutely nothing to do with trees, other than "living in them", and they are (as far as modern science knows) unaware of the intricacies of data storage and manipulation. But they *are* quite cute, and zoologically quite interesting. So there you go: arctic redpolls. Go look them up, and appreciate the diversity of life on this planet. Because why not?
+They have absolutely nothing to do with trees, other than "living in them", and they are (as far as we know) unaware of the intricacies of data storage and data structure manipulation. But they *are* quite cute, and zoologically quite interesting. So there you go: arctic redpolls. Go look them up, and appreciate the diversity of life on this planet. Because why not?
 
 ## Installation
 
@@ -63,7 +63,18 @@ var root = new Tree();
 
 And done, we have a root.
 
+It is also possible to create a fully specified Tree, by passing in a json-serialized Tree description:
+
+```
+var oldTree = ...
+var serialized = oldTree.toString();
+var newTree = new Tree(serialized); // functionally equivalent to oldTree
+```
+
+
 ### Forming nodes
+
+Note that for the purposes of a tree library, references to nodes and references to trees are *identical*, and so there is no distinction between a "Tree" data structure and a "Tree node" data structure. They are the same thing.
 
 The modus operandus of this library is that you should not care about nodes unless you *really* care about nodes. As such, you can add as many children to any node as you like, and if you want the new nodes that makes, you can capture those, but you don't have to.
 
@@ -75,11 +86,18 @@ root.add({
   values
 });
 
+// get a reference to the node/subtree created when adding data:
 var n = root.add({
   some: "other",
   thing: "with",
   more: "properties"
 });
+
+// don't bother with additional references
+n.add({ ... });
+n.add({ ... });
+n.add({ ... });
+
 ```
 
 Additionally, if you want absolute precision, you can pass in an insertion algorithm that can traverse the tree as it exists, and find the right node to do the insertion for you
@@ -112,7 +130,7 @@ Let's cover all the things that this library does right now:
 
 ### remove(node)
 
-Removes a node from the tree. Tree don't care where it is. If it exists, it'll find it.
+Removes a node from the tree. Tree don't care where it is. If it exists, it'll find it, and kill it.
 
 ### find(matchObject)
 
@@ -195,6 +213,8 @@ while(it.hasNext()) {
   doSomethingWithThisInformation(node);
 }
 ```
+
+There is currently no control over the order in which all nodes are found, and if you *really* need an iterator, ordering should not matter: all nodes will be traversed anyway. If this is not the case, you don't want an iterator but a node collection.
 
 ## License
 
